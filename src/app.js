@@ -8,18 +8,8 @@ app.use(express.json());
 app.use(express.urlencoded());
 
 app.get("/restaurants", async (req, res) => {
-  const restaurants = await Restaurant.findAll({
-    include: [
-      {
-        model: Menu,
-        include: [
-          {
-            model: Item,
-          },
-        ],
-      },
-    ],
-  });
+  const restaurants = await Restaurant.findAll()
+    
   res.json(restaurants);
 });
 
